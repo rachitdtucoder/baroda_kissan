@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Shop Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Style for the scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        .scroll-to-top i {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UJLAYAN KISAN SEVA KENDRA (MAIN SHOP), BARODA</h1>
+        <span><img src="vikas.jpg" alt="VIKAS UJLAYAN" width="250" height="100" border="1px"></span>
+        <div class="actions">
+            <button id="addTransactionBtn">Sell</button>
+            <div class="right-actions">
+                <input type="text" id="searchInput" placeholder="Search by Customer Name">
+            </div>
+        </div>
+        <div class="add-medicine">
+            <h2>Add Medicine</h2>
+            <input type="text" id="medicineName" placeholder="Medicine Name">
+            <input type="number" id="medicineQuantity" placeholder="Quantity">
+            <input type="number" id="medicineBuyingPrice" placeholder="Buying Price">
+            <button id="addMedicineBtn">Add Medicine</button>
+        </div>
+        <div class="transactions">
+            <h2>Transactions</h2>
+            <table id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>Serial</th>
+                        <th>Date</th>
+                        <th>Customer Name</th>
+                        <th>Customer Mobile</th>
+                        <th>Medicine</th>
+                        <th>Quantity Sold</th>
+                        <th>Buying Price</th>
+                        <th>Selling Price</th>
+                        <th>Profit</th>
+                        <th>Amount Paid</th>
+                        <th>Amount Pending</th>
+                        <th>Total Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTableBody">
+                    <!-- Transaction rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <div class="inventory">
+            <h2>Inventory</h2>
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>Serial</th>
+                        <th>Medicine</th>
+                        <th>Quantity</th>
+                        <th>Buying Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryTableBody">
+                    <!-- Inventory rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <div class="sales-report">
+            <h2>Sales Report</h2>
+            <input type="text" id="reportMedicineName" placeholder="Enter Medicine Name">
+            <button id="generateReportBtn">Generate Report</button>
+            <table id="salesReportTable">
+                <thead>
+                    <tr>
+                        <th>Month/Year</th>
+                        <th>Quantity Sold</th>
+                        <th>Total Sales</th>
+                        <th>Total Profit</th>
+                    </tr>
+                </thead>
+                <tbody id="salesReportTableBody">
+                    <!-- Sales report rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+        <div class="monthly-profit-report">
+            <h2>Monthly Profit Report</h2>
+            <input type="text" id="reportMonth" placeholder="Enter Month/Year (MM/YYYY)">
+            <button id="generateMonthlyProfitReportBtn">Generate Report</button>
+            <table id="monthlyProfitReportTable">
+                <thead>
+                    <tr>
+                        <th>Month/Year</th>
+                        <th>Total Profit</th>
+                    </tr>
+                </thead>
+                <tbody id="monthlyProfitReportTableBody">
+                    <!-- Monthly profit report rows will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal for adding transactions -->
+    <div id="transactionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Details</h2>
+            <label for="customerNameInput">Customer Name:</label>
+            <input type="text" id="customerNameInput">
+            <label for="customerMobileInput">Customer Mobile:</label>
+            <input type="text" id="customerMobileInput">
+            <h3>Medicines</h3>
+            <div id="medicinesContainer">
+                <div class="medicine-entry">
+                    <label for="medicineNameInput">Medicine Name:</label>
+                    <input type="text" class="medicineNameInput">
+                    <label for="medicineQuantityInput">Enter Quantity:</label>
+                    <input type="number" class="medicineQuantityInput">
+                    <label for="medicineSellingPriceInput">Selling Price:</label>
+                    <input type="number" class="medicineSellingPriceInput">
+                </div>
+            </div>
+            <button id="addMedicineEntryBtn">Add Another Medicine</button>
+            <button id="saveTransactionBtn">Save Transaction</button>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'  // Optional: smooth scroll animation
+            });
+        }
+
+        // Show the scroll-to-top button when scrolling down
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.querySelector('.scroll-to-top').style.display = 'block';
+            } else {
+                document.querySelector('.scroll-to-top').style.display = 'none';
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
